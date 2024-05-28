@@ -1,0 +1,50 @@
+<div class="flex flex-column align-items-center">
+    <h1> Books List </h1>
+    <p-table [value]="(books$ | async)!" [tableStyle]="{ 'min-width': '50rem' }" styleClass="mt-4" selectionMode="single"
+        [(selection)]="selectedBook" (selectionChange)="selectBookRow()" (onRowUnselect)="selectBookRow()">
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-end">
+                <div class="flex flex-wrap gap-3">
+                    <div class="flex align-items-center">
+                        <p-radioButton name="searchType" value="name" [(ngModel)]="searchType" inputId="searchName" />
+                        <label for="searchName" class="ml-2">
+                            Name
+                        </label>
+                    </div>
+
+                    <div class="flex align-items-center">
+                        <p-radioButton name="searchType" value="author" [(ngModel)]="searchType"
+                            inputId="searchAuthor" />
+                        <label for="searchAuthor" class="ml-2">
+                            Author
+                        </label>
+                    </div>
+                    <input pInputText type="text" [(ngModel)]="searchValue" (input)="search()"
+                        placeholder="Search name or author" />
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Type</th>
+                <th class="w-3rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-book>
+            <tr [pSelectableRow]="book">
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.type }}</td>
+                <td> <p-button icon="pi pi-eye" styleClass="w-2rem h-2rem" (onClick)="viewBookDetails(book)" /> </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+@if (selectedBook && selectedBook.id && isOpenedDialog) {
+<p-dialog header="Book Details" [modal]="true" [(visible)]="isOpenedDialog" (onHide)="closeBookDetails()">
+    <app-book-details [selectedBook]="selectedBook" (closeBookDetails)="closeBookDetails()"></app-book-details>
+</p-dialog>
+}

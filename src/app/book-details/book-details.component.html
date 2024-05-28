@@ -1,0 +1,13 @@
+<div class="flex flex-column w-full">
+    <p-card header="{{selectedBook.name}} ({{selectedBook.year}})" subheader="{{selectedBook.author}}" [style]="{ width: '360px' }">
+        <ng-template pTemplate="header">
+            <img alt="Card" [src]="imageUrl" class="cover-image"/>
+        </ng-template>
+        <p> {{ selectedBook.description }}  </p>
+        <ng-template pTemplate="footer">
+            <div class="flex gap-3 mt-1">
+                <p-button label="Cancel"class="w-full" styleClass="w-full" (onClick)="cancel()"/>
+            </div>
+        </ng-template>
+    </p-card>
+</div>

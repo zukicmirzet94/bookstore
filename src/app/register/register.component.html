@@ -1,0 +1,42 @@
+<div class="flex flex-column align-items-center justify-content-center w-full h-screen bg-blue-100">
+    <h1> Register </h1>
+    <div class="flex flex-column align-items-center justify-content-center p-5 bg-white register-box">
+        <form [formGroup]="registerForm" class="flex flex-column align-items-center" (ngSubmit)="register()">
+            <p-floatLabel class="mb-4">
+                <input pInputText id="name" formControlName="name" class="w-full" />
+                <label for="name">Name*</label>
+            </p-floatLabel>
+            @if (hasRequiredError('name') && registerForm.get('name')!.touched) {
+            <span class="w-full text-red-600 text-xs p-2 mb-3 required-error"> Name is Required </span>
+            }
+            <p-floatLabel class="mb-4">
+                <input pInputText id="username" formControlName="username" class="w-full" />
+                <label for="username">Username*</label>
+            </p-floatLabel>
+            @if (hasRequiredError('username') && registerForm.get('username')!.touched) {
+            <span class="w-full text-red-600 text-xs p-2 mb-3 required-error"> Username is Required </span>
+            }
+            <p-floatLabel class="mb-4">
+                <input pInputText type="password" id="password" formControlName="password" class="w-full" />
+                <label for="password">Password*</label>
+            </p-floatLabel>
+            <p-floatLabel class="mb-2">
+                <input pInputText type="password" id="rePassword" formControlName="rePassword" class="w-full" />
+                <label for="rePassword">Re-Password*</label>
+            </p-floatLabel>
+            @if (registerForm.hasError('passwordMismatch') && registerForm.get('rePassword')?.touched) {
+            <span class="border-2 border-red-600 text-red-600 border-round-md text-xs p-2 mb-3"> Passwords do not match
+            </span>
+            }
+            <div class="flex align-items-center">
+                @for (role of roles; track role) {
+                <p-radioButton [inputId]="role" [value]="role" formControlName="role" styleClass="mx-2"/>
+                <label [for]="role" class="ml-2">
+                    {{ role | titlecase }}
+                </label>
+                }
+            </div>
+            <p-button type="submit" label="Save" class="w-full" styleClass="w-full mt-2" />
+        </form>
+    </div>
+</div>

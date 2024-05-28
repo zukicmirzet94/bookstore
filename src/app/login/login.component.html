@@ -1,0 +1,19 @@
+<div class="flex flex-column align-items-center justify-content-center w-full h-screen bg-blue-100">
+    <h1> Login </h1>
+    <div class="flex flex-column align-items-center justify-content-center p-5 bg-white login-box">
+        <p-floatLabel class="mb-4">
+            <input pInputText id="username" [(ngModel)]="loginRequest.username" class="w-full" />
+            <label for="username">Username</label>
+        </p-floatLabel>
+        <p-floatLabel class="mb-2">
+            <input pInputText type="password" id="password" [(ngModel)]="loginRequest.password" class="w-full" />
+            <label for="password">Password</label>
+        </p-floatLabel>
+        @if (loginError) {
+        <span class="border-2 border-red-600 text-red-600 border-round-md text-xs p-2 mb-2"> Incorrect username or password </span>
+        }
+        <p-button label="Login" class="w-full" styleClass="w-full mb-2" (onClick)="login()" />
+        <span> or </span>
+        <p-button label="Register" class="w-full" styleClass="w-full mt-2" (onClick)="register()" />
+    </div>
+</div>

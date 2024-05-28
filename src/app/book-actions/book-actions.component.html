@@ -1,0 +1,28 @@
+<div class="p-5">
+    <form [formGroup]="bookForm" class="flex flex-column align-items-center" (ngSubmit)="saveBook()">
+        <p-floatLabel class="w-full mb-5">
+            <input pInputText id="name" formControlName="name" class="w-full" />
+            <label for="name">Name</label>
+        </p-floatLabel>
+        <p-floatLabel class="w-full mb-5">
+            <textarea rows="5" cols="30" pInputTextarea id="description" formControlName="description"
+                class="w-full"></textarea>
+            <label for="description">Description</label>
+        </p-floatLabel>
+        <p-floatLabel class="w-full mb-5">
+            <input pInputText id="author" formControlName="author" class="w-full" />
+            <label for="author">Author</label>
+        </p-floatLabel>
+        <p-floatLabel class="w-full mb-5">
+            <input pInputText type="nubmer" id="year" formControlName="year" class="w-full" />
+            <label for="year">Year</label>
+        </p-floatLabel>
+        @if (selectedFileUrl) {
+            <img [src]="selectedFileUrl" class="book-image mb-2"/>
+        }
+        <p-fileUpload mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000"
+            (onSelect)="onSelectFile($event)" />
+        <p-button type="submit" label="Save" class="w-full mt-3 pt-2 text-center border-top-1 border-none border-solid border-gray-300" />
+    </form>
+</div>

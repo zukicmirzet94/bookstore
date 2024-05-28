@@ -60,3 +60,9 @@ It will show tasks that you can run with Nx.
 - [Join the community](https://nx.dev/community)
 - [Subscribe to the Nx Youtube Channel](https://www.youtube.com/@nxdevtools)
 - [Follow us on Twitter](https://twitter.com/nxdevtools)
+
+## How to run and test app
+- Use Node v22.2.0
+- Run `json-server` with command `npx json-server ./src/assets/db/db.json` from root path (server-side)
+- Run client-side with command `npm start`
+- Initial login credentials are: admin/admin (Admin role) and user/user (User role)
