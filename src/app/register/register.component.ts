@@ -33,7 +33,6 @@ export class RegisterComponent {
 
   ngOnInit() {
     this.roles = Object.values(Role).filter(role => role !== Role.UNAUTHORIZED);
-    console.log(this.roles)
   }
  
   register() {

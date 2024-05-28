@@ -95,7 +95,6 @@ export class BookListComponent {
 
   closeBookDetails() {
     this.selectedBook = {};
-    console.log(this.selectedBook)
     this.isOpenedDialog = false;
   }
 

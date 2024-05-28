@@ -44,7 +44,6 @@ export class BookActionsComponent {
 
   ngOnInit() {
     if (this.selectedBook && this.selectedBook.id) {
-      console.log(this.selectedBook)
       this.bookForm.patchValue(this.selectedBook);
       if (this.selectedBook.image && this.selectedBook.image.length > 0) {
         this.selectedFileUrl = this.getImageUrl(this.selectedBook.image);
